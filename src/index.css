@@ -1,0 +1,60 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: rgb(23 23 23); /* neutral-900 */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+::selection {
+  background-color: rgb(23 23 23); /* neutral-900 */
+  color: white;
+}
+
+:target {
+  scroll-margin-top: 100px;
+  animation: highlight 1s ease-out;
+}
+
+@keyframes highlight {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Gradient Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a; /* Darker track for better contrast */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899); /* Using your gradient sphere colors */
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #2563eb, #7c3aed, #db2777); /* Slightly darker on hover */
+}
+
