@@ -1,26 +1,45 @@
-import { Menu } from 'lucide-react';
+import { useState } from 'react';
 
+interface NavbarProps {
+  currentSection: string;
+}
 
+export const Navbar = ({ currentSection }: NavbarProps) => {
+  const sections = ['about', 'work', 'resume', 'connect'];
 
-
-export const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50">
-      <div className="text-center py-3 bg-white/80 backdrop-blur-sm border-b border-neutral-100">
-        <a href="/" className="text-sm font-medium">Sarah Chen</a>
-      </div>
-      
-      <div className="fixed left-16 top-1/2 -translate-y-1/2">
-        <div className="hidden md:flex flex-col gap-8 text-sm">
-          <a href="#about" className="hover:text-neutral-600 transition-colors">About</a>
-          <a href="#work" className="hover:text-neutral-600 transition-colors">Projects</a>
-          <a href="#resume" className="hover:text-neutral-600 transition-colors">Resume</a>
-        </div>
-
-        <button className="p-2 hover:bg-neutral-100 rounded-full transition-colors md:hidden">
-          <Menu className="h-5 w-5" />
-        </button>
-      </div>
+    <nav className="fixed left-12 top-1/2 -translate-y-1/2 z-50" style={{ transition: 'none' }}>
+      <ul className="flex flex-col gap-4" style={{ transition: 'none' }}>
+        {sections.map((section) => (
+          <li key={section} className="relative" style={{ transition: 'none' }}>
+            {currentSection === section && (
+              <div 
+                style={{ transition: 'none' }}
+                className="absolute left-[-20px] top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-gradient-to-r from-purple-500 to-blue-500"
+              />
+            )}
+            <button
+              onClick={() => {
+                document.getElementById(section)?.scrollIntoView();
+              }}
+              className={`
+                px-8 py-3 
+                rounded-full
+                ${currentSection === section 
+                  ? 'text-violet-500 dark:text-violet-400 font-medium' 
+                  : 'text-neutral-600 hover:text-violet-500 dark:text-white dark:hover:text-violet-400'}
+                transition-colors
+                cursor-hover-target
+              `}
+              style={{ transition: 'none' }}
+            >
+              <span>
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </span>
+            </button>
+          </li>
+        ))}
+      </ul>
     </nav>
   );
 };
