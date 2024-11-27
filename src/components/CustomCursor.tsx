@@ -38,15 +38,15 @@ export const CustomCursor = () => {
     <div ref={cursorRef} className="custom-cursor">
       <svg 
         className="cursor-arrow" 
-        width="12" 
-        height="12" 
+        width="14" 
+        height="14" 
         viewBox="0 0 12 12" 
         fill="none"
       >
         <path 
           d="M1 11L11 1M11 1H3M11 1V9" 
           stroke="white" 
-          strokeWidth="1.5" 
+          strokeWidth="2" 
           strokeLinecap="round" 
           strokeLinejoin="round"
         />

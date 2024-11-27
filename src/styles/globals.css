@@ -1,3 +1,49 @@
+/* Import Tailwind CSS */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400&display=swap');
+
+/* Import aesthetic fonts */
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap');
+
+/* Add to your existing Tailwind config */
+@layer base {
+  :root {
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-sans: 'DM Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-satoshi: 'Satoshi', sans-serif;
+    --font-general: 'General Sans', sans-serif;
+    --font-clash: 'Clash Display', sans-serif;
+    --font-melodrama: 'Melodrama', serif;
+    --font-synonym: 'Synonym', sans-serif;
+    --font-sentient: 'Sentient', serif;
+    --font-primary: 'Satoshi', sans-serif;
+  }
+}
+
+/* Your existing styles */
+html,
+body,
+* {
+  cursor: none !important;
+}
+
+/* Optional: Show default cursor on mobile/touch devices */
+@media (max-width: 768px) {
+  html,
+  body,
+  * {
+    cursor: auto !important;
+  }
+}
+
 body {
   overscroll-behavior: none;
   touch-action: none;
@@ -152,4 +198,388 @@ or
 
 .sphere-shadow {
   filter: drop-shadow(0 4px 12px rgba(66, 138, 255, 0.2));
+}
+
+.background-grid {
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(66, 138, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(66, 138, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  z-index: -2;
+  pointer-events: none;
+}
+
+
+/* Shapes */
+.shapes-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+}
+
+.shape-1 {
+  width: 500px;
+  height: 500px;
+  top: -250px;
+  right: -100px;
+  animation: floatShape1 25s infinite linear;
+}
+
+.shape-2 {
+  width: 400px;
+  height: 400px;
+  bottom: -150px;
+  left: -100px;
+  animation: floatShape2 30s infinite linear;
+}
+
+.shape-3 {
+  width: 300px;
+  height: 300px;
+  top: 50%;
+  right: 25%;
+  animation: floatShape3 20s infinite linear;
+}
+
+@keyframes floatShape1 {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(100px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+
+@keyframes floatShape2 {
+  0% { transform: translateX(0) rotate(0deg); }
+  50% { transform: translateX(100px) rotate(-180deg); }
+  100% { transform: translateX(0) rotate(-360deg); }
+}
+
+@keyframes floatShape3 {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.2) rotate(180deg); }
+  100% { transform: scale(1) rotate(360deg); }
+}
+
+/* Connect Button Styles */
+.connect-btn {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+/* Optional: Add this font import to your head */
+@import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@500&display=swap');
+
+.font-cabinet-grotesk {
+  font-family: 'Cabinet Grotesk', sans-serif;
+}
+
+.path-animation {
+  animation: pathFloat 8s ease-in-out infinite;
+}
+
+@keyframes pathFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+}
+
+.gradient-text-animate {
+  background: linear-gradient(
+    to right,
+    #428aff,
+    #9054ff,
+    #428aff
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 200% auto;
+  animation: shine 8s linear infinite;
+}
+
+.animate-title {
+  transition: all 0.3s ease;
+}
+
+.animate-title:hover {
+  transform: translateY(-2px);
+  text-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes shine {
+  from {
+    background-position: -200% center;
+  }
+  to {
+    background-position: 0% center;
+  }
+}
+
+/* Add subtle animation for each word on page load */
+.animate-title {
+  opacity: 0;
+  animation: fadeUp 0.5s ease forwards;
+}
+
+.animate-title:nth-child(1) { animation-delay: 0.1s; }
+.animate-title:nth-child(2) { animation-delay: 0.2s; }
+.animate-title:nth-child(3) { animation-delay: 0.3s; }
+.animate-title:nth-child(4) { animation-delay: 0.4s; }
+.animate-title:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fancy-title {
+  position: relative;
+  display: inline-block;
+  color: #1a1a1a;
+  transition: all 0.3s ease;
+}
+
+.hover-trigger {
+  position: relative;
+  cursor: default;
+  padding: 4px 0;
+}
+
+.gradient-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    #428aff,
+    #9054ff,
+    #428aff
+  );
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.hover-trigger:hover {
+  background: linear-gradient(
+    to right,
+    #428aff,
+    #9054ff
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hover-trigger:hover .gradient-line {
+  transform: scaleX(1);
+}
+
+/* Initial load animation */
+.animate-slide-up {
+  animation: slideUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.fancy-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fancy-title {
+  position: relative;
+  display: inline-block;
+  color: #1a1a1a;
+  transition: all 0.3s ease;
+}
+
+.hover-trigger {
+  position: relative;
+  cursor: default;
+  padding: 4px 8px;
+}
+
+.hover-trigger:hover {
+  background: linear-gradient(
+    to right,
+    #428aff,
+    #9054ff
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hover-trigger:hover .gradient-line {
+  transform: scaleX(1);
+}
+
+.gradient-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    #428aff,
+    #9054ff,
+    #428aff
+  );
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.hover-trigger:hover {
+  background: linear-gradient(
+    to right,
+    #428aff,
+    #9054ff
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hover-trigger:hover .gradient-line {
+  transform: scaleX(1);
+}
+
+/* Initial load animation */
+.animate-slide-up {
+  animation: slideUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.shine-effect {
+  background: linear-gradient(
+    to right,
+    #2d2d2d 10%,
+    #ffffff 20%,
+    #ffffff 25%,
+    #2d2d2d 35%
+  );
+  background-size: 200% auto;
+  color: #2d2d2d;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 2s linear infinite;
+  font-weight: 500;
+}
+
+@keyframes shine {
+  from {
+    background-position: 0% center;
+  }
+  to {
+    background-position: 200% center;
+  }
+}
+
+.prompt-container {
+  background: rgba(247, 248, 250, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.prompt-label {
+  color: #666;
+  font-size: 0.9em;
+  font-weight: 500;
+  margin-right: 0.75rem;
+  padding-right: 0.75rem;
+  border-right: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.shine-effect {
+  background: linear-gradient(
+    to right,
+    #2d2d2d 10%,
+    #ffffff 20%,
+    #ffffff 25%,
+    #2d2d2d 35%
+  );
+  background-size: 200% auto;
+  color: #2d2d2d;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 2s linear infinite;
+  font-weight: 500;
+}
+
+/* First, add the noise texture */
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: -50;
+  background-color: #f5f5f5;  /* subtle gray background */
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+@layer utilities {
+  .bg-grid {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(209, 213, 219, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(209, 213, 219, 0.05) 1px, transparent 1px);
+  }
+}
+
+/* Optional: Add a subtle noise texture */
+.noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  pointer-events: none;
 } 

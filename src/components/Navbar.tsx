@@ -7,6 +7,13 @@ interface NavbarProps {
 export const Navbar = ({ currentSection }: NavbarProps) => {
   const sections = ['about', 'work', 'resume', 'connect'];
 
+  const handleClick = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <nav className="fixed left-12 top-1/2 -translate-y-1/2 z-50" style={{ transition: 'none' }}>
       <ul className="flex flex-col gap-4" style={{ transition: 'none' }}>
@@ -19,9 +26,7 @@ export const Navbar = ({ currentSection }: NavbarProps) => {
               />
             )}
             <button
-              onClick={() => {
-                document.getElementById(section)?.scrollIntoView();
-              }}
+              onClick={() => handleClick(section)}
               className={`
                 px-8 py-3 
                 rounded-full

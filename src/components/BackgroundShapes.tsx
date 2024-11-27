@@ -1,10 +1,19 @@
 import { motion } from 'framer-motion';
 
+export const Background = () => {
+  return (
+    <>
+      <div className="background-grid" />
+      <div className="noise-bg" />
+    </>
+  );
+};
+
 export const BackgroundShapes = () => {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden">
       <motion.div
-        className="absolute w-72 h-72 rounded-full bg-neutral-100/50 blur-3xl"
+        className="absolute w-72 h-72 rounded-full bg-neutral-100/70 blur-3xl"
         animate={{
           x: [0, 100, 0],
           y: [0, -50, 0],
@@ -20,7 +29,7 @@ export const BackgroundShapes = () => {
         }}
       />
       <motion.div
-        className="absolute w-96 h-96 rounded-full bg-neutral-100/30 blur-3xl"
+        className="absolute w-96 h-96 rounded-full bg-neutral-100/50 blur-3xl"
         animate={{
           x: [0, -70, 0],
           y: [0, 100, 0],
