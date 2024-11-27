@@ -274,133 +274,135 @@ const WorkSection = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <Section id="work" className="min-h-screen flex items-center justify-center py-20">
-      <div className="max-w-7xl mx-auto px-6 w-full">
-        <h2 className="text-2xl mb-16 cursor-hover-target tracking-wide font-primary">
-          Selected Work
-        </h2>
-        
-        <div className="relative rounded-2xl border border-neutral-200/10 
-                      bg-gradient-to-b from-white/[0.03] to-transparent
-                      backdrop-blur-sm p-8">
-          <div className="space-y-4">
-            {projects.map((project, index) => (
-              <div 
-                key={index}
-                onMouseEnter={() => setActiveIndex(index)}
-                onMouseLeave={() => setActiveIndex(null)}
-                className="group relative"
-              >
-                {/* Project Pill */}
-                <div className={`relative flex items-center justify-between px-12 py-6
-                              rounded-full border-2 backdrop-blur-[2px]
-                              transition-all duration-500
-                              ${project.color} ${project.hoverBg}
-                              min-w-[800px] cursor-hover-target`}>
-                  {/* Left: Thumbnail and Project Info */}
-                  <div className="flex items-center gap-8">
-                    {/* Project Thumbnail/Logo */}
-                    <div className="relative w-16 h-16 rounded-full overflow-hidden
-                                  border-2 border-neutral-200/10 bg-white">
-                      <img 
-                        src={project.logo || project.image}
-                        alt={project.title}
-                        className="object-contain w-full h-full p-3"
-                      />
-                    </div>
-
-                    {/* Project Info */}
-                    <div className="flex items-center gap-16">
-                      <span className="text-sm text-neutral-500 w-20 tracking-wide font-primary">
-                        {project.year}
-                      </span>
-                      <h3 className="text-xl min-w-[200px] tracking-wide font-primary">
-                        {project.title}
-                      </h3>
-                    </div>
-                  </div>
-
-                  {/* Right: Tech Stack */}
-                  <div className="flex items-center gap-12">
-                    <div className="flex gap-2">
-                      {project.tech.slice(0, 3).map((tech, i) => (
-                        <span 
-                          key={i}
-                          className="px-3 py-1 text-xs rounded-full 
-                                   bg-white/10 backdrop-blur-sm
-                                   border border-neutral-200/10
-                                   font-primary tracking-wide"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                      {project.tech.length > 3 && (
-                        <span className="px-3 py-1 text-xs rounded-full 
-                                       bg-white/10 backdrop-blur-sm
-                                       border border-neutral-200/10
-                                       font-primary tracking-wide">
-                          +{project.tech.length - 3}
-                        </span>
-                      )}
-                    </div>
-                    <motion.span
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ 
-                        opacity: activeIndex === index ? 1 : 0,
-                        x: activeIndex === index ? 0 : -10 
-                      }}
-                      className={`text-2xl ${project.color.split(' ')[0].replace('/20', '')}`}
-                    >
-                      →
-                    </motion.span>
-                  </div>
-                </div>
-
-                {/* Hover Preview */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ 
-                    opacity: activeIndex === index ? 1 : 0,
-                    scale: activeIndex === index ? 1 : 0.95,
-                  }}
-                  transition={{ duration: 0.2 }}
-                  className={`absolute left-[calc(100%+2rem)] top-0 w-[450px]
-                            bg-white/5 backdrop-blur-[8px]
-                            rounded-xl border ${project.color.split(' ')[0]}
-                            shadow-[0_8px_30px_rgb(0,0,0,0.12)]
-                            p-6 z-50 pointer-events-none`}
+    <Section id="work" className="min-h-screen flex items-center justify-center">
+      <div className="max-w-7xl mx-auto px-6 w-full my-auto py-32">
+        <div className="flex flex-col items-center">
+          <h2 className="text-2xl mb-16 cursor-hover-target tracking-wide font-primary text-center">
+            Selected Work
+          </h2>
+          
+          <div className="relative rounded-2xl border border-neutral-200/10 
+                        bg-gradient-to-b from-white/[0.03] to-transparent
+                        backdrop-blur-sm p-8">
+            <div className="space-y-4">
+              {projects.map((project, index) => (
+                <div 
+                  key={index}
+                  onMouseEnter={() => setActiveIndex(index)}
+                  onMouseLeave={() => setActiveIndex(null)}
+                  className="group relative"
                 >
-                  <div className="space-y-4">
-                    {/* Larger Project Image */}
-                    <div className="relative aspect-[16/9] w-full rounded-lg overflow-hidden">
-                      <motion.img 
-                        src={project.image} 
-                        alt={project.title}
-                        className="object-contain w-full h-full"
-                        initial={{ scale: 1.2 }}
-                        animate={{ scale: 1 }}
-                        transition={{ duration: 0.5 }}
-                      />
-                    </div>
-                    <p className="text-sm text-neutral-400 leading-relaxed font-primary">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map((tech, i) => (
-                        <span 
-                          key={i}
-                          className="px-3 py-1.5 text-sm rounded-full 
-                                   bg-white border border-neutral-200
-                                   text-neutral-600"
-                        >
-                          {tech}
+                  {/* Project Pill */}
+                  <div className={`relative flex items-center justify-between px-12 py-6
+                                rounded-full border-2 backdrop-blur-[2px]
+                                transition-all duration-500
+                                ${project.color} ${project.hoverBg}
+                                min-w-[800px] cursor-hover-target`}>
+                    {/* Left: Thumbnail and Project Info */}
+                    <div className="flex items-center gap-8">
+                      {/* Project Thumbnail/Logo */}
+                      <div className="relative w-16 h-16 rounded-full overflow-hidden
+                                    border-2 border-neutral-200/10 bg-white">
+                        <img 
+                          src={project.logo || project.image}
+                          alt={project.title}
+                          className="object-contain w-full h-full p-3"
+                        />
+                      </div>
+
+                      {/* Project Info */}
+                      <div className="flex items-center gap-16">
+                        <span className="text-sm text-neutral-500 w-20 tracking-wide font-primary">
+                          {project.year}
                         </span>
-                      ))}
+                        <h3 className="text-xl min-w-[200px] tracking-wide font-primary">
+                          {project.title}
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Right: Tech Stack */}
+                    <div className="flex items-center gap-12">
+                      <div className="flex gap-2">
+                        {project.tech.slice(0, 3).map((tech, i) => (
+                          <span 
+                            key={i}
+                            className="px-3 py-1 text-xs rounded-full 
+                                     bg-white/10 backdrop-blur-sm
+                                     border border-neutral-200/10
+                                     font-primary tracking-wide"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                        {project.tech.length > 3 && (
+                          <span className="px-3 py-1 text-xs rounded-full 
+                                         bg-white/10 backdrop-blur-sm
+                                         border border-neutral-200/10
+                                         font-primary tracking-wide">
+                            +{project.tech.length - 3}
+                          </span>
+                        )}
+                      </div>
+                      <motion.span
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ 
+                          opacity: activeIndex === index ? 1 : 0,
+                          x: activeIndex === index ? 0 : -10 
+                        }}
+                        className={`text-2xl ${project.color.split(' ')[0].replace('/20', '')}`}
+                      >
+                        →
+                      </motion.span>
                     </div>
                   </div>
-                </motion.div>
-              </div>
-            ))}
+
+                  {/* Hover Preview */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ 
+                      opacity: activeIndex === index ? 1 : 0,
+                      scale: activeIndex === index ? 1 : 0.95,
+                    }}
+                    transition={{ duration: 0.2 }}
+                    className={`absolute left-[calc(100%+2rem)] top-0 w-[450px]
+                              bg-white/5 backdrop-blur-[8px]
+                              rounded-xl border ${project.color.split(' ')[0]}
+                              shadow-[0_8px_30px_rgb(0,0,0,0.12)]
+                              p-6 z-50 pointer-events-none`}
+                  >
+                    <div className="space-y-4">
+                      {/* Larger Project Image */}
+                      <div className="relative aspect-[16/9] w-full rounded-lg overflow-hidden">
+                        <motion.img 
+                          src={project.image} 
+                          alt={project.title}
+                          className="object-contain w-full h-full"
+                          initial={{ scale: 1.2 }}
+                          animate={{ scale: 1 }}
+                          transition={{ duration: 0.5 }}
+                        />
+                      </div>
+                      <p className="text-sm text-neutral-400 leading-relaxed font-primary">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tech.map((tech, i) => (
+                          <span 
+                            key={i}
+                            className="px-3 py-1.5 text-sm rounded-full 
+                                     bg-white border border-neutral-200
+                                     text-neutral-600"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -597,74 +599,61 @@ const App = () => {
 
           {/* About section content */}
           <section id="about" className="min-h-screen flex items-center justify-center py-20">
-            <div className="max-w-4xl mx-auto px-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="space-y-8"
-              >
-                {/* Greeting */}
+            <div className="max-w-4xl mx-auto px-6 flex flex-col items-center text-center">
+              <motion.div className="space-y-8">
+                {/* Greeting - centered */}
                 <motion.span 
-                  className="text-sm font-mono text-neutral-500"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
+                  className="text-sm font-mono bg-gradient-to-r from-neutral-500 to-neutral-400 bg-clip-text text-transparent"
                 >
                   Hi there, I'm
                 </motion.span>
 
-                {/* Name */}
+                {/* Name - centered */}
                 <motion.h1 
                   className="text-6xl font-bold text-neutral-900 font-display"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.3 }}
                 >
                   Harsha Chaganti
                 </motion.h1>
 
-                {/* Role */}
+                {/* Role - centered */}
                 <motion.div 
-                  className="text-3xl text-neutral-600 font-display font-semibold"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4 }}
+                  className="text-3xl font-display font-semibold"
                 >
-                  AI-Augmented Front-End Developer
+                  <span className="bg-gradient-to-r from-violet-600 to-blue-600 bg-clip-text text-transparent">AI-Augmented</span>
+                  {' '}Front-End Developer
                 </motion.div>
 
-                {/* Description */}
+                {/* Description - centered */}
                 <motion.p 
                   className="text-lg text-neutral-600 max-w-2xl"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
                 >
-                  I design user-centric interfaces and leverage AI tools to generate optimized front-end code, 
+                  I design <span className="text-violet-600">user-centric interfaces</span> and leverage{' '}
+                  <span className="text-blue-600">AI tools</span> to generate optimized front-end code, 
                   bridging the gap between creativity and technical implementation for seamless web experiences.
                 </motion.p>
 
-                {/* CTA Buttons */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.6 }}
-                  className="flex gap-4 pt-4"
-                >
+                {/* Buttons - Subtle style with larger size and rounded corners */}
+                <motion.div className="flex gap-6 pt-4 justify-center">
                   <motion.a
                     href="#work"
-                    className="px-6 py-3 bg-neutral-900 text-white rounded-lg hover:bg-neutral-800 transition-colors"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    className="relative px-8 py-3 text-base font-medium tracking-wide
+                             text-violet-600 transition-colors duration-300
+                             border border-violet-200 rounded-full
+                             hover:bg-violet-50 hover:border-violet-300"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     View My Work
                   </motion.a>
+
                   <motion.a
                     href="#connect"
-                    className="px-6 py-3 border border-neutral-300 rounded-lg hover:border-neutral-400 transition-colors"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    className="relative px-8 py-3 text-base font-medium tracking-wide
+                             text-neutral-600 transition-colors duration-300
+                             border border-neutral-200 rounded-full
+                             hover:bg-neutral-50 hover:border-neutral-300"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                   >
                     Get in Touch
                   </motion.a>
